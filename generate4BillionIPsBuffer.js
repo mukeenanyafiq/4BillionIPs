@@ -24,5 +24,5 @@ for (let i = 1; i <= IP_COUNT + 1; i++) {
 }
 
 // Write the generated IPs to the file
-fs.writeFileSync("./4BillionIPss.txt", ipBuffer.join("\n"));
+fs.writeFileSync("./4BillionIPs.txt", ipBuffer.join("\n"));
 console.log("IP generation complete and saved to file.");

@@ -1,5 +1,5 @@
 const fs = require('fs');
-const IP_COUNT = Math.pow(2, 32);  // 4 billion IPs
+const IP_COUNT = Math.pow(2, 32) - 1;  // 4 billion IPs
 const BATCH_SIZE = 1000000;            // Write 1 million IPs at a time
 const LOG_INTERVAL = Math.floor(IP_COUNT / 100); // Log progress every 1% completion
 

@@ -14,5 +14,11 @@ You COULD try contributing to this project by making an even optimized script th
 
 To read such a large file, you could visit https://www.readfileonline.com/
 
+# Issues? Contribution Request?? A question???
+Use each communication feature from GitHub correctly
+- **Issues** are for when you found a problem and you want to report it
+- Request to contribute adding new language script or modifying current script? **Pull Request** is the way to go
+- You have a question? Start a **discussion** in **Discussions** with the category **QnA**
+
 # Contemplating my life
 > Was this worth it enough? **No. No it doesn't. But I had fun with it.**

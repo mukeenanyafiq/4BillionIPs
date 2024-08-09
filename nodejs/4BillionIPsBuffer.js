@@ -5,6 +5,7 @@
 
 const fs = require('fs'); // Use node:fs to access filesystem
 const IP_COUNT = Math.pow(2, 32); // 4 billion IPs
+const BATCH_SIZE = 10000000; // Process 10 million IPs at a time
 const LOG_INTERVAL = Math.floor(IP_COUNT / 100); // Log progress every 1% completion
 const start = Date.now(); // Record execution time
 
@@ -24,6 +25,9 @@ for (let i = 1; i <= IP_COUNT; i++) {
 
     // Log progress at intervals
     if (i % LOG_INTERVAL == 0) console.log(`[Progress] Generated ${i.toLocaleString()}/${IP_COUNT.toLocaleString()} IPs (${(i / IP_COUNT) * 100}%)`);
+
+    // Chunk proccessing
+    if (i % BATCH_SIZE == 0) console.log(`[Progress] Reached ${i.toLocaleString()} IPs; continuing to generate...`);
 }
 
 // Write the generated IPs to the file

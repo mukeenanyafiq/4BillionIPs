@@ -5,7 +5,7 @@
 
 import time
 IP_COUNT = 2**32  # 4 billion IPs
-BATCH_SIZE = 1000000  # Write 1 million IPs at a time
+BATCH_SIZE = 10_000_000  # Process 10 million IPs at a time
 LOG_INTERVAL = IP_COUNT // 100  # Log progress every 1% completion
 filename = "../4BillionIPs.txt"
 
@@ -14,16 +14,26 @@ def int_to_ip(int_ip):
 
 start = time.time()  # Record execution time
 
-with open(filename, 'w') as file:
-    ipBuffer = []  # Use a buffer to store IPs
+def generate_ips():
+    start_time = time.time()
+    ip_list = []
 
     for i in range(IP_COUNT):
-        ipBuffer.append(int_to_ip(i))
+        ip_list.append(int_to_ip(i))
 
         # Log progress at intervals
-        if i % LOG_INTERVAL == 0: print(f"[Progress] Generated {i:,}/{IP_COUNT:,} IPs ({(i / IP_COUNT) * 100:.2f}%)")
+        if (i + 1) % LOG_INTERVAL == 0:
+            elapsed_time = time.time() - start
+            print(f"[Progress] Generated {i + 1:,}/{IP_COUNT:,} IPs ({(i + 1) / IP_COUNT * 100}%) in {elapsed_time:.3f} seconds")
 
-    # Write the generated IPs to the file
-    file.write("\n".join(buffer))
+        # Chunk processing
+        if (i + 1) % BATCH_SIZE == 0: print(f"[Progress] Reached {i + 1:,} IPs; continuing to generate...")
 
-print(f"IP generation complete and saved to file. ({time.time() - start:.2f}s)")
+    # Write all IPs to the file in one go
+    with open(filename, 'w') as file:
+        file.write("\n".join(ip_list))
+
+    print(f"IP generation complete and saved to file in {time.time() - start:.3f} seconds.")
+
+if __name__ == "__main__":
+    generate_ips()

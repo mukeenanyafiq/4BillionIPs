@@ -2,7 +2,7 @@
 -- Lua script version of 4BillionIPs written by @mukeenanyafiq
 
 local IP_COUNT = 2^32 -- 4 billion IPs
-local BATCH_SIZE = 1000000 -- Write 1 million IPs at a time
+local BATCH_SIZE = 10000000 -- Process 10 million IPs at a time
 local LOG_INTERVAL = math.floor(IP_COUNT / 100) -- Log progress every 1% completion
 local filename = "../4BillionIPs.txt"
 
@@ -29,9 +29,12 @@ for i = 1, IP_COUNT - 1 do
     end
 
     -- Log progress at intervals
-    if i > 0 and i % LOG_INTERVAL == 0 then print(string.format("[Progress] Generated %d/%d IPs (%.2f%%)", i, IP_COUNT, (i/IP_COUNT) * 100)) end
+    if i > 0 & i % LOG_INTERVAL == 0 then print(string.format("[Progress] Generated %d/%d IPs (%d%)", i, IP_COUNT, (i/IP_COUNT) * 100)) end
+
+    -- Chunk proccessing
+    if i > 0 & i % BATCH_SIZE == 0 then print(string.format("[Progress] Reached %d IPs; continuing to generate...", i)) end
 end
 
 -- Write any remaining IPs in the buffer to the file
 if #buffer > 0 then file:write(table.concat(buffer, "\n")) end
-print(string.format("IP generation complete and saved to file. (%.2fs)", os.time() - start));
+print(string.format("IP generation complete and saved to file. (%.3fs)", os.time() - start));

@@ -5,6 +5,7 @@
 -- 64+ GBs of RAM are probably required.
 
 local IP_COUNT = 2^32 -- 4 billion IPs
+local BATCH_SIZE = 10000000; -- Process 10 million IPs at a time
 local LOG_INTERVAL = math.floor(IP_COUNT / 100) -- Log progress every 1% completion
 local filename = "../4BillionIPs.txt"
 
@@ -26,8 +27,11 @@ for i = 1, IP_COUNT - 1 do
 
     -- Log progress at intervals
     if i % LOG_INTERVAL == 0 then print(string.format("[Progress] Generated %d/%d IPs (%.2f%%)", i, IP_COUNT, (i/IP_COUNT) * 100)) end
+
+    -- Chunk proccessing
+    if i > 0 & i % BATCH_SIZE == 0 then print(string.format("[Progress] Reached %d IPs; continuing to generate...", i)) end
 end
 
 -- Write any remaining IPs in the buffer to the file
 file:write(table.concat(ipBuffer, "\n"))
-print(string.format("IP generation complete and saved to file. (%.2fs)", os.time() - start));
+print(string.format("IP generation complete and saved to file. (%.3fs)", os.time() - start));

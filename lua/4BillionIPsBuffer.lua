@@ -1,14 +1,16 @@
 -- This script is only compatible for Lua 5.3+
 -- Lua script version of 4BillionIPs written by @mukeenanyafiq
 
+-- This script will generate 4 billion IPs in your RAM, and then letting it all off on a file which would took a while
+-- 64+ GBs of RAM are probably required.
+
 local IP_COUNT = 2^32 -- 4 billion IPs
-local BATCH_SIZE = 1000000 -- Write 1 million IPs at a time
 local LOG_INTERVAL = math.floor(IP_COUNT / 100) -- Log progress every 1% completion
 local filename = "../4BillionIPs.txt"
 
 local start = os.time() -- Record execution time
 
-function intToIP(int)
+local function intToIP(int)
     return string.format("%d.%d.%d.%d",
         (int >> 24) & 0xFF,
         (int >> 16) & 0xFF,

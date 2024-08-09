@@ -8,7 +8,7 @@ local filename = "../4BillionIPs.txt"
 
 local start = os.time() -- Record execution time
 
-function intToIP(int)
+local function intToIP(int)
     return string.format("%d.%d.%d.%d",
         (int >> 24) & 0xFF,
         (int >> 16) & 0xFF,

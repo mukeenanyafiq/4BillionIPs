@@ -1,6 +1,6 @@
 # Python script version of 4BillionIPs written by @mukeenanyafiq
 
-# This script will generate 4 billion IPs in your RAM, and then letting it all off on a file
+# This script will generate 4 billion IPs in your RAM, and then letting it all off on a file which would took a while
 # 64+ GBs of RAM are probably required.
 
 import time

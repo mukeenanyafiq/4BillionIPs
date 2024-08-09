@@ -3,7 +3,7 @@
 
 const fs = require('fs');
 const generatedIPs = new Set();
-const IP_COUNT = Math.pow(2, 32) + 1;
+const IP_COUNT = Math.pow(2, 32);
 const LOG_INTERVAL = Math.floor(IP_COUNT / 100); // Log progress every 1% completion
 
 function generateIP() {

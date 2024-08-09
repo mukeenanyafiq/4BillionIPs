@@ -5,5 +5,13 @@ This file is so big my Notepad couldn't read it allat (I couldn't even upload it
 
 You COULD try contributing to this project by making an even optimized script that generates 4 billion IPs in different programming language in probably no time
 
+# Rules of generating 4 billion IPs
+- Must be IPv4 (of course.)
+- Use built-in module that is pre-installed
+- Each IP has 4 different number positions ranging from 0 to 255
+- Sorted from 0.0.0.0 to 255.255.255.255
+
+To read such a large file, you could visit https://www.readfileonline.com/
+
 # Contemplating my life
 > Was this worth enough? **No. No it doesn't. But I had fun with it.**

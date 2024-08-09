@@ -21,3 +21,9 @@ jobs:
 
     - name: Run IP generation script
       run: node generate4BillionIPs.js
+
+    - name: Upload generated IPs file
+      uses: actions/upload-artifact@v3
+      with:
+        name: generated-ips
+        path: ./4BillionIPs.txt

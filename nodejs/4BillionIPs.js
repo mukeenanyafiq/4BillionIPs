@@ -32,5 +32,5 @@ for (let i = 0; i < IP_COUNT; i++) {
 }
 
 // Write any remaining IPs in the buffer to the file
-if (buffer.length > 0) fs.appendFileSync(filename, buffer.join("\n") + "\n");
+if (buffer.length > 0) fs.appendFileSync(filename, buffer.join("\n"));
 console.log(`IP generation complete and saved to file. (${(Date.now() - start)/1000}s)`);

@@ -12,7 +12,7 @@ def int_to_ip(int_ip):
 start = time.time()  # Record execution time
 
 with open(filename, 'w') as file:
-    buffer = []
+    buffer = []  # Use a temporary buffer
 
     for i in range(IP_COUNT):
         buffer.append(int_to_ip(i))
@@ -26,6 +26,6 @@ with open(filename, 'w') as file:
         if i > 0 and i % LOG_INTERVAL == 0: print(f"[Progress] Generated {i:,}/{IP_COUNT:,} IPs ({(i / IP_COUNT) * 100:.2f}%)")
 
     # Write any remaining IPs in the buffer to the file
-    if buffer: file.write("\n".join(buffer) + "\n")
+    if buffer: file.write("\n".join(buffer))
 
 print(f"IP generation complete and saved to file. ({time.time() - start:.2f}s)")

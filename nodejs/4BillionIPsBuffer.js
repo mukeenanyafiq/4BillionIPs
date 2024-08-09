@@ -1,7 +1,7 @@
 // Node.js script version of 4BillionIPs written by @mukeenanyafiq
 
-// This script will generate 4 billion IPs but instead of saving it first, it will put all the generated IPs in your RAM.
-// 128 GBs of RAM are probably required.
+// This script will generate 4 billion IPs in your RAM, and then letting it all off on a file
+// 64+ GBs of RAM are probably required.
 
 const fs = require('fs'); // Use node:fs to access filesystem
 const IP_COUNT = Math.pow(2, 32); // 4 billion IPs

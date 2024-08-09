@@ -1,5 +1,8 @@
 # Python script version of 4BillionIPs written by @mukeenanyafiq
 
+# This script will generate 4 billion IPs in your RAM, and then letting it all off on a file
+# 64+ GBs of RAM are probably required.
+
 import time
 IP_COUNT = 2**32  # 4 billion IPs
 BATCH_SIZE = 1000000  # Write 1 million IPs at a time
@@ -12,7 +15,7 @@ def int_to_ip(int_ip):
 start = time.time()  # Record execution time
 
 with open(filename, 'w') as file:
-    ipBuffer = []
+    ipBuffer = []  # Use a buffer to store IPs
 
     for i in range(IP_COUNT):
         ipBuffer.append(int_to_ip(i))
@@ -21,6 +24,6 @@ with open(filename, 'w') as file:
         if i % LOG_INTERVAL == 0: print(f"[Progress] Generated {i:,}/{IP_COUNT:,} IPs ({(i / IP_COUNT) * 100:.2f}%)")
 
     # Write the generated IPs to the file
-    file.write("\n".join(buffer) + "\n")
+    file.write("\n".join(buffer))
 
 print(f"IP generation complete and saved to file. ({time.time() - start:.2f}s)")

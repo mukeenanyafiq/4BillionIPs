@@ -11,6 +11,7 @@ You COULD try contributing to this project by making an even optimized script th
 - Each IP has 4 different number positions ranging from 0 to 255
 - Sorted from 0.0.0.0 to 255.255.255.255
 - Have 2 version of the script (storage-usage & memory-usage a.k.a buffer-usage)
+- Progress logging is optional
 
 To read such a large file, you could visit https://www.readfileonline.com/
 
